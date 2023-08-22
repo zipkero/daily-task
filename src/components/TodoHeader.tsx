@@ -13,7 +13,7 @@ export default function TodoHeader() {
           <IoIosArrowDropright onClick={() => alert("right")} size="2.5em" />
         </div>
       </div>
-      <div className="flex justify-center items-center mt-5 text-green-400 text-lg font-bold">
+      <div className="flex justify-center items-center mt-5 text-green-300 text-lg font-bold">
         <span>할 일 2개 남음</span>
       </div>
     </header>

@@ -1,61 +1,4 @@
 import { MdDone, MdDelete } from "react-icons/md";
-import styled from "@emotion/styled";
-import { css } from "@emotion/react";
-
-const Remove = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #dee2e6;
-  font-size: 24px;
-  cursor: pointer;
-  &:hover {
-    color: #ff6b6b;
-  }
-  visibility: hidden;
-`;
-
-const Container = styled.div`
-  display: flex;
-  align-items: center;
-  padding-top: 12px;
-  padding-bottom: 12px;
-  &:hover {
-    ${Remove} {
-      visibility: visible;
-    }
-  }
-`;
-
-const CheckCircle = styled.div<{ done: boolean }>`
-  width: 32px;
-  height: 32px;
-  border-radius: 16px;
-  border: 1px solid #ced4da;
-  font-size: 24px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-right: 20px;
-  cursor: pointer;
-  ${(props) =>
-    props.done &&
-    css`
-      border: 1px solid #38d9a9;
-      color: #38d9a9;
-    `}
-`;
-
-const Text = styled.div<{ done: boolean }>`
-  flex: 1;
-  font-size: 21px;
-  color: #495057;
-  ${(props) =>
-    props.done &&
-    css`
-      color: #ced4da;
-    `}
-`;
 
 interface Props {
   done: boolean;
@@ -64,12 +7,24 @@ interface Props {
 
 export default function TodoItem({ done, text }: Props) {
   return (
-    <Container>
-      <CheckCircle done={done}>{done && <MdDone />}</CheckCircle>
-      <Text done={done}>{text}</Text>
-      <Remove>
+    <div className="flex items-center py-3 group">
+      <div
+        className={`w-8 h-8 rounded-full border-2 border-solid  text-2xl flex items-center justify-center cursor-pointer mr-5 ${
+          done
+            ? "border-green-300 text-green-300"
+            : "border-gray-200 text-gray-200"
+        }`}
+      >
+        {done && <MdDone />}
+      </div>
+      <div
+        className={`flex-1 text-xl ${done ? "text-gray-200" : "text-gray-600"}`}
+      >
+        {text}
+      </div>
+      <div className="flex items-center justify-center text-gray-300 text-2xl cursor-pointer group-hover:visible hover:text-red-400 invisible">
         <MdDelete />
-      </Remove>
-    </Container>
+      </div>
+    </div>
   );
 }
