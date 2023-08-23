@@ -1,54 +1,21 @@
-import styled from "@emotion/styled";
 import { IoIosArrowDropleft, IoIosArrowDropright } from "react-icons/io";
 import TodoHeaderDate from "./TodoHeaderDate.tsx";
 
-const Container = styled.div`
-  display: flex;
-  flex-direction: column;
-  padding: 24px 32px 24px;
-  border-bottom: 1px solid #e9ecef;
-`;
-
-const DateBlock = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-`;
-
-const RemainBlock = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: #20c997;
-  font-size: 18px;
-  margin-top: 20px;
-  font-weight: bold;
-`;
-
-const ArrowBlock = styled.div`
-  width: 10%;
-  cursor: pointer;
-  opacity: 0.2;
-  &:hover {
-    opacity: 1;
-  }
-`;
-
 export default function TodoHeader() {
   return (
-    <Container>
-      <DateBlock>
-        <ArrowBlock>
+    <header className="flex flex-col px-6 pt-8 border border-solid border-slate-50">
+      <div className="flex justify-between items-center">
+        <div className="w-1/12 cursor-pointer opacity-20 hover:opacity-100">
           <IoIosArrowDropleft onClick={() => alert("left")} size="2.5em" />
-        </ArrowBlock>
+        </div>
         <TodoHeaderDate selectedKey={"2020-01-01"} />
-        <ArrowBlock>
+        <div className="w-1/12 cursor-pointer opacity-20 hover:opacity-100">
           <IoIosArrowDropright onClick={() => alert("right")} size="2.5em" />
-        </ArrowBlock>
-      </DateBlock>
-      <RemainBlock>
+        </div>
+      </div>
+      <div className="flex justify-center items-center mt-5 text-green-300 text-lg font-bold">
         <span>할 일 2개 남음</span>
-      </RemainBlock>
-    </Container>
+      </div>
+    </header>
   );
 }

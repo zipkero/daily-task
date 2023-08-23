@@ -1,74 +1,5 @@
 import { MdAdd } from "react-icons/md";
-import styled from "@emotion/styled";
-import { css } from "@emotion/react";
 import { useState } from "react";
-
-const CircleButton = styled.button<{ open: boolean }>`
-  background: #38d9a9;
-  &:hover {
-    background: #63e6be;
-  }
-  &:active {
-    background: #20c997;
-  }
-
-  z-index: 5;
-  cursor: pointer;
-  width: 80px;
-  height: 80px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 60px;
-  position: absolute;
-  left: 50%;
-  bottom: 0;
-  transform: translate(-50%, 50%);
-  color: white;
-  border-radius: 50%;
-  border: none;
-  outline: none;
-
-  transition: 0.125s all ease-in;
-  ${(props) =>
-    props.open &&
-    css`
-      background: #ff6b6b;
-      &:hover {
-        background: #ff8787;
-      }
-      &:active {
-        background: #fa5252;
-      }
-      transform: translate(-50%, 50%) rotate(45deg);
-    `}
-`;
-
-const InsertFormPositioner = styled.div`
-  width: 100%;
-  bottom: 0;
-  left: 0;
-  position: absolute;
-`;
-
-const InsertForm = styled.form`
-  background: #f8f9fa;
-  padding: 32px 32px 72px;
-
-  border-bottom-left-radius: 16px;
-  border-bottom-right-radius: 16px;
-  border-top: 1px solid #e9ecef;
-`;
-
-const Input = styled.input`
-  padding: 12px;
-  border-radius: 4px;
-  border: 1px solid #dee2e6;
-  width: 100%;
-  outline: none;
-  font-size: 18px;
-  box-sizing: border-box;
-`;
 
 export default function TodoForm() {
   const [open, setOpen] = useState(false);
@@ -78,15 +9,27 @@ export default function TodoForm() {
   return (
     <>
       {open && (
-        <InsertFormPositioner>
-          <InsertForm>
-            <Input autoFocus placeholder="할 일을 입력 후, Enter 를 누르세요" />
-          </InsertForm>
-        </InsertFormPositioner>
+        <div className="w-full bottom-0 left-0 absolute">
+          <form className="bg-slate-100 pt-8 px-8 pb-16 border-t-0 border-slate-200 rounded-bl-2xl rounded-br-2xl">
+            <input
+              type="text"
+              placeholder="할 일을 입력 후, Enter 를 누르세요"
+              autoFocus
+              className="w-full px-4 py-2 box-border rounded-md border border-solid border-slate-50 outline-none focus:border-green-300"
+            />
+          </form>
+        </div>
       )}
-      <CircleButton onClick={onToggle} open={open}>
+      <button
+        className={`${
+          open
+            ? "bg-rose-400 hover:bg-rose-300 active:bg-rose-600 rotate-45"
+            : "bg-green-400 hover:bg-green-300 active:bg-green-600"
+        } translate-y-1/2 -translate-x-1/2 duration-150 transition-all ease-in border-none outline-none rounded-full text-white text-6xl flex justify-center items-center z-10 cursor-pointer w-20 h-20 absolute left-1/2 bottom-0`}
+        onClick={onToggle}
+      >
         <MdAdd />
-      </CircleButton>
+      </button>
     </>
   );
 }
