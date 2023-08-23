@@ -8,7 +8,7 @@ interface Props {
   selectedKey: string;
 }
 
-export default function TodoHeaderDate({ selectedKey }: Props) {
+export default function TaskHeaderDate({ selectedKey }: Props) {
   const currentDate = getDateFromDateKey(selectedKey);
   return (
     <div className="grid">

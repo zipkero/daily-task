@@ -5,7 +5,7 @@ interface Props {
   text: string;
 }
 
-export default function TodoItem({ done, text }: Props) {
+export default function TaskItem({ done, text }: Props) {
   return (
     <div className="flex items-center py-3 group">
       <div

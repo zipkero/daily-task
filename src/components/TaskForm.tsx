@@ -1,7 +1,7 @@
 import { MdAdd } from "react-icons/md";
 import { useState } from "react";
 
-export default function TodoForm() {
+export default function TaskForm() {
   const [open, setOpen] = useState(false);
 
   const onToggle = () => setOpen(!open);
