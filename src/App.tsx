@@ -1,16 +1,16 @@
-import TodoContainer from "./components/TodoContainer.tsx";
-import TodoHeader from "./components/TodoHeader.tsx";
-import TodoForm from "./components/TodoForm.tsx";
-import TodoList from "./components/TodoList.tsx";
+import TaskContainer from "./components/TaskContainer.tsx";
+import TaskHeader from "./components/TaskHeader.tsx";
+import TaskForm from "./components/TaskForm.tsx";
+import TaskList from "./components/TaskList.tsx";
 
 function App() {
   return (
     <>
-      <TodoContainer>
-        <TodoHeader />
-        <TodoList />
-        <TodoForm />
-      </TodoContainer>
+      <TaskContainer>
+        <TaskHeader />
+        <TaskList />
+        <TaskForm />
+      </TaskContainer>
     </>
   );
 }
