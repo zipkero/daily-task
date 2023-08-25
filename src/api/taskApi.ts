@@ -6,16 +6,19 @@ import {
   deleteDoc,
   getDocs,
   collection,
+  query,
+  where,
 } from "firebase/firestore";
 import { Task } from "../types/Task.ts";
 
-export const addTask = async (task: Task) => {
+export const insertTask = async (task: Task) => {
   const docRef = await addDoc(collection(db, "tasks"), task);
   return docRef.id;
 };
 
-export const getTasks = async () => {
-  const docSnap = await getDocs(collection(db, "tasks"));
+export const getTaskAll = async (dateKey: string) => {
+  const q = query(collection(db, "tasks"), where("createdAt", "==", dateKey));
+  const docSnap = await getDocs(q);
   return docSnap.docs.map((doc) => ({ id: doc.id, ...doc.data() }) as Task);
 };
 
